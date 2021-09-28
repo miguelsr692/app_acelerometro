@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#424141"
+        tools:context="br.com.luiztools.chatapp.MainActivity">
+
+    <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ACCELEROMETER DATA ACQUISITION"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="20dp" />
+
+    <RelativeLayout
+            android:id="@+id/Medicao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Title"
+            android:layout_marginTop="30dp" >
+
+        <TextView
+                android:id="@+id/X_Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X: "
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="#F80303"/>
+
+        <TextView
+                android:id="@+id/X_Values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/X_Label"
+                android:text="0"
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="#F80303"/>
+
+        <TextView
+                android:id="@+id/Y_Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/X_Label"
+                android:text="Y: "
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="#F5FD03"/>
+
+        <TextView
+                android:id="@+id/Y_Values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/X_Values"
+                android:layout_toRightOf="@id/Y_Label"
+                android:text="0"
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="#F5FD03"/>
+
+        <TextView
+                android:id="@+id/Z_Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Y_Label"
+                android:text="Z: "
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="#02FF0E"/>
+
+        <TextView
+                android:id="@+id/Z_Values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Y_Values"
+                android:layout_toRightOf="@+id/Z_Label"
+                android:text="0"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:textColor="#02FF0E"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/Botoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/Medicao"
+            android:layout_marginTop="50dp" >
+
+        <Button
+                android:id="@+id/B_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="20dp"/>
+
+        <Button
+                android:id="@+id/B_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/B_start"
+                android:layout_alignTop="@id/B_start"
+                android:layout_alignBottom="@id/B_start"
+                android:layout_marginLeft="20dp"
+                android:text="Stop"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:paddingHorizontal="33dp" />
+
+        <Button
+                android:id="@+id/B_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/B_start"
+                android:layout_alignRight="@id/B_start"
+                android:layout_alignLeft="@id/B_start"
+                android:layout_marginTop="20dp"
+                android:paddingVertical="20dp"
+                android:text="Record"
+                android:textStyle="bold"
+                android:textSize="23sp" />
+
+        <Button
+                android:id="@+id/B_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/B_stop"
+                android:layout_alignRight="@id/B_stop"
+                android:layout_alignLeft="@id/B_stop"
+                android:layout_alignBottom="@id/B_record"
+                android:layout_alignTop="@id/B_record"
+                android:text="Save"
+                android:textStyle="bold"
+                android:textSize="23sp"/>
+
+        <Button
+                android:id="@+id/B_slow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/B_record"
+                android:layout_alignLeft="@id/B_record"
+                android:layout_alignRight="@id/B_record"
+                android:layout_marginTop="20dp"
+                android:paddingVertical="20dp"
+                android:text="Slow"
+                android:textStyle="bold"
+                android:textSize="23sp" />
+
+        <Button
+                android:id="@+id/B_fast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/B_save"
+                android:layout_alignRight="@id/B_save"
+                android:layout_alignLeft="@id/B_save"
+                android:layout_alignTop="@id/B_slow"
+                android:layout_alignBottom="@id/B_slow"
+                android:text="Fast"
+                android:textStyle="bold"
+                android:textSize="23sp" />
+
+    </RelativeLayout>
+
+    <Button
+            android:id="@+id/B_enviar"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Botoes"
+            android:layout_marginTop="20dp"
+            android:text="SEND"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="20dp" />
+
+    <ListView
+            android:id="@+id/mensagens"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/B_enviar"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#B6B5B5" >
+    </ListView>
+
+
+
+</RelativeLayout>
