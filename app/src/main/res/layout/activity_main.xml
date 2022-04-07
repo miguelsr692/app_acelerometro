@@ -177,17 +177,35 @@
 
     <Button
             android:id="@+id/B_enviar"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/Botoes"
             android:layout_below="@+id/Botoes"
             android:layout_marginTop="20dp"
             android:text="SEND"
             android:textStyle="bold"
             android:textSize="23sp"
-            android:paddingHorizontal="30dp"
+            android:paddingHorizontal="35dp"
             android:paddingVertical="20dp" />
+
+    <EditText
+            android:id="@+id/n_envios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/B_enviar"
+            android:layout_below="@id/Botoes"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignBottom="@id/B_enviar"
+            android:layout_alignRight="@id/Botoes"
+            android:hint="Nº ENVIOS"
+            android:gravity="center"
+            android:background="#B6B5B5"
+            android:singleLine="true"
+            android:inputType="number"
+    />
 
     <ListView
             android:id="@+id/mensagens"
