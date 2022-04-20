@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     String nomeArquivo; //nome do arquivo onde será escrito os dados
     String path; //local de salvamento do arquivo
     String msgErro; //variavel auxiliar para mensagem de erro
+    String portaSocket = "3001";
     Calendar data; //variavel auxiliar para data
     Date timeStamp; //variavel auxiliar para tempo
     ArrayList b; //vetor que receberá os dados que serão enviados para o servidor
@@ -121,10 +122,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, READ_SOCKET);
         }
         else
-            waitMessage();
+            waitMessage(portaSocket);
     }
 
-    // -------------------------- COMUNICACAO --------------------------
+    // -------------------------- COMUNICAÇÃO --------------------------
 
     /*
     função que é chamada quando o app é fechado
@@ -156,10 +157,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     /*
     função que faz a conexão com o servidor e fica "escutando" a porta do socket
      */
-    private void waitMessage(){
+    private void waitMessage(String porta){
         try {
-            //socket = IO.socket("http://10.0.2.2:3001"); //envia localmente
-            socket = IO.socket("https://projpibic.herokuapp.com"); //envia para o app online
+            String uri = "http://10.0.2.2:" + porta;
+            socket = IO.socket(uri); //envia localmente
+            //socket = IO.socket("https://projpibic.herokuapp.com"); //envia para o app online
             socket.on("display", new Emitter.Listener() {
                 @Override
                 public void call(final Object... args) {
@@ -167,8 +169,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         @Override
                         public void run() {
                             //coloca a mensagem recebida na lista
-                            adapter.add(args[0].toString());
+                            //adapter.add(args[0].toString());
                             adapter.notifyDataSetChanged();
+                            if(args[0].toString().equals("PRONTO")) {
+                                //adapter.add("RECEBIDO");
+                                if (portaSocket.equals("3001")) {
+                                    portaSocket = "3002";
+                                    waitMessage(portaSocket);
+                                    socket.emit("chat message", "START");
+                                } else {
+                                    portaSocket = "3001";
+                                    waitMessage(portaSocket);
+                                }
+
+                            } else {
+                                adapter.add(args[0].toString());
+                            }
 
                             // Apenas faz um scroll para o novo item da lista
                             mensagens.smoothScrollToPosition(adapter.getCount() - 1);
@@ -227,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         switch (requestCode) {
             case READ_SOCKET: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    waitMessage();
+                    waitMessage(portaSocket);
                     return;
                 }
                 break;
